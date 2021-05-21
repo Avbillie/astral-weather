@@ -1,0 +1,99 @@
+.navigation-bar {
+  background: linear-gradient(to right, #30588C, #4D688C, #D9B88F);
+}
+
+
+.title-container {
+  display: flex;
+  width: max-content;
+  margin-left: 1.5rem;
+}
+
+.title-container .title-part-A {
+  color: rgb(170, 170, 170)
+}
+
+.title-container .title-part-B {
+  color: whitesmoke;
+}
+
+.title-container .title-part-A,
+.title-container .title-part-B {
+  text-shadow: 1px 1px 1px whitesmoke;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2.3rem
+}
+
+.navigation-menu {
+  background: linear-gradient(to right, #30588C, #033E8C, #D9B88F);
+  width: 100%;
+  height: auto;
+  padding: 0;
+  display:grid;
+  place-items: center
+}
+
+.navigation-links-container{
+  width: max-content;
+}
+
+
+// utils
+
+::placeholder {
+  color: black;
+  opacity: 50%;
+}
+
+.box {
+  float: left;
+  width: max-content;
+  text-align: center
+}
+
+.box a {
+  float: right;
+  width: max-content;
+  padding: 1rem;
+  color: white;
+  font-size: 1.3rem;
+  text-decoration-line: none;
+}
+
+.box a:hover {
+  color: rgba(207, 205, 205, 0.794);
+  text-decoration-line: none;
+}
+
+// searchbar
+
+.height{
+  height: 100%;
+}
+
+.box {
+  float: left;
+  width: max-content;
+  text-align: center
+}
+
+.box a {
+  float: right;
+  width: max-content;
+  padding: 1rem;
+  color: white;
+  font-size: 1.3rem;
+  text-decoration-line: none;
+}
+
+.box a:hover {
+  color: rgba(207, 205, 205, 0.794);
+  text-decoration-line: none;
+}
+
+.sevenDayForecast{
+  height: 100%;
+  display: block;
+  justify-content: center;
+  align-items: center;
+}

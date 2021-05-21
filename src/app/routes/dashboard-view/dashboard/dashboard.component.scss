@@ -1,0 +1,221 @@
+.current-weather-container {
+  width: max-content;
+  color: white;
+  font-style: italic;
+  height: max-content;
+  margin: 1rem auto 0rem auto;
+  display: flex;
+}
+
+.current-weather-container-2{
+  width: max-content;
+  margin: auto;
+  background: linear-gradient(to top, #ffffff5e, #4d688cd8,#4d688cd8);
+  padding: 1.5rem;
+  border: .1rem solid palegoldenrod;
+  border-radius: 1rem;
+}
+
+.current-weather-container-2 .current-weather{
+  width: max-content;
+  color: white;
+  font-style: italic;
+  height: max-content;
+  margin: 0rem auto;
+  display: flex;
+}
+
+.current-weather-container-2 .current-weather p,
+.current-weather-container-2 .current-weather h1{
+  font-size: 1.7rem;
+  margin: auto auto auto 1rem;
+  text-shadow: rgb(170, 170, 170) 2px 2px 2px;
+}
+
+
+.current-weather-details{
+  color: white;
+  font-style: italic;
+  height: max-content;
+  margin: auto;
+  width: max-content;
+  display: flex;
+}
+
+.current-weather-details .humidity,
+.current-weather-details .wind{
+  font-size: 1.2rem;
+  width: max-content;
+  text-align: center;
+  display: flex;
+}
+
+.day-container {
+  font-size: 1.2rem;
+  color: white;
+  font-style: italic;
+  width: max-content;
+  margin: 0 auto;
+  display: flex;
+  height: max-content;
+}
+
+.humidity,
+.wind{
+  padding:0rem .5rem;
+}
+
+.temperature-container {
+  font-size: 1.2rem;
+}
+
+.high-container,
+.low-container {
+  display: flex;
+  margin: auto;
+  width: max-content;
+}
+
+
+.low-container .low,
+.high-container .high {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 1.5rem;
+  text-shadow: white 1px 1px 1px;
+}
+
+.high-container .max-temp,
+.low-container .min-temp {
+  font-size: 1.5rem;
+  margin: auto 0rem auto .5rem;
+}
+
+.high-container .high,
+.high-container .max-temp {
+  color: rgb(245, 232, 225);
+  text-shadow: orange 1px 1px 1px;
+}
+
+.low-container .low,
+.low-container .min-temp {
+  color: lightcyan;
+  text-shadow: blue 1px 1px 1px;
+}
+
+.current-weather-container h1{
+  font-size: 2.4rem;
+  margin: 0;
+  text-shadow: rgb(170, 170, 170) 2px 2px 2px;
+}
+
+.current-weather-container p{
+  font-size: 1.7rem;
+  margin: auto auto auto 1rem;
+  text-shadow: rgb(170, 170, 170) 2px 2px 2px;
+}
+
+.current-weather-container a{
+  margin: auto 0rem auto 1rem;
+}
+
+.current-weather-container h1,
+.current-weather-container p{
+  font-size: 2rem;
+  text-shadow: black 1px 1px 1px;
+}
+
+.current-weather-container img{
+  width: 1.8rem;
+  height: 1.8rem;
+  border: .1rem solid palegoldenrod;
+  padding: .2rem;
+  border-radius: 2rem;
+  margin: auto 0;
+  background-color: rgba(255, 255, 255, 0.781) !important;
+}
+
+.current-weather-container img:hover{
+  background-color:  rgba(158, 158, 158, 0.5) !important;
+  cursor: pointer;
+}
+
+.search-bar-container {
+  display: flex;
+  text-align: center !important;
+  padding: .2rem;
+  border: .1 solid;
+  border-radius: 2rem;
+  width: max-content;
+  transition: 0.5s;
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  margin: 1rem auto;
+  border: .2rem solid palegoldenrod;
+
+}
+
+.search-bar-container:hover>.search-bar {
+  width: 6rem;
+}
+
+.search-bar-container:hover>.search-bar2 {
+  width: 2rem;
+}
+
+.search-bar-container .search-bar {
+  height: 2rem;
+  padding: 0.5rem 0rem 0.5rem 0.5rem;
+  text-align: center;
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: black;
+  font-size: 1rem;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0;
+  margin: auto 0rem auto auto;
+}
+
+.search-bar-container .search-bar2 {
+  height: 2rem;
+  padding: 0.5rem;
+  text-align: center;
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: black;
+  font-size: 1rem;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0;
+  margin: auto auto auto 0rem;
+}
+
+.search-bar-container button {
+  margin: auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent !important;
+  border: .1rem solid transparent;
+  border-radius: 2rem;
+}
+
+.search-bar-container button:hover{
+  cursor: pointer;
+}
+.search-bar-container Img {
+  width: 2rem;
+  height: 2rem;
+  padding: .2rem;
+}
+
+::placeholder {
+  color: black;
+  opacity: 50%;
+}
+
