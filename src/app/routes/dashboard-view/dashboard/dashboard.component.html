@@ -1,4 +1,4 @@
-<div *ngIf="toggleSwitch === 'on'" class="search-bar-container">
+<div  class="search-bar-container">
   <input class="search-bar level-item" #input type="text" placeholder="Washington">
   <input class="search-bar2 level-item" #input2 type="text" placeholder="DC">
 
@@ -6,13 +6,13 @@
       srcset=""></button>
 </div>
 
-<div *ngIf="toggleSwitch === 'off'" class="current-weather-container">
+<!-- <div *ngIf="toggleSwitch === 'off'" class="current-weather-container">
   <h1>{{currentCityWeather.city}}</h1>
   <p>{{currentCityWeather.weather}}</p>
   <a href="" onclick="return false" (click)="toggle()"><img [src]="searchImg" alt="" srcset=""></a>
-</div>
+</div> -->
 
-<div *ngIf="toggleSwitch === 'on' && data !== any" class="current-weather-container-2">
+<div *ngIf="data !== null" class="current-weather-container-2">
   <div class="current-weather">
     <h1>{{currentCityWeather.city}}</h1>
     <p> {{currentCityWeather.weather}}</p>

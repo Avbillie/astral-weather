@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { CurrentForecastData } from 'src/app/models/current-forecast-data.model';
 import { SevenDayForecast } from 'src/app/models/seven-day-forecast.model';
 import { ForecastService } from 'src/app/services/forecast-service/forecast-service.service';
-import *  as  jsonCities from 'src/app/JSON/US_States_and_Cities.json';
-import * as jsonCityCodes from 'src/app/JSON/stateData.json';
+import jsonCities from 'src/app/JSON/US_States_and_Cities.json';
+import jsonCityCodes from 'src/app/JSON/stateData.json';
 import * as moment from 'moment';
+
 
 
 @Component({
@@ -15,9 +16,10 @@ import * as moment from 'moment';
 })
 export class DashboardComponent implements OnInit {
   toggleSwitch: any;
-  data: any;
+  data:any=null;
   humidityImg = './assets/images/humidity.jpg';
   searchImg = './assets/images/magnifying-glass-icon-26752.png';
+  sevenDayArray: any [] =[];
   dayArray: any[] = [];
   stateCodeArray: any[] = []
   weekdayDataArray: any[] = [];
@@ -50,14 +52,18 @@ export class DashboardComponent implements OnInit {
 
   parseJSONdata() {
     // Parses between two json files and compares the cities, if cities match pull the json city code and combine json data then push to array
-    for (let a of jsonCityCodes.default) {
-      for (let b of jsonCities.default) {
-        if (a.State === b.state) {
-          b = { ...b, code: a.Code }
-          this.stateCodeArray.push(b)
+    for (let a = 0; a < jsonCityCodes.length;a++) {
+      for (let b = 0; b < jsonCities.length;b++) {
+        if (jsonCityCodes[a].State === jsonCities[b].state) {
+          this.stateCodeArray.push({
+            city: jsonCities[b].city,
+            state: jsonCities[b].state,
+            code: jsonCityCodes[a].Code
+          })
         }
       }
     }
+    console.log(this.stateCodeArray)
   }
 
   toggle(){
@@ -94,29 +100,32 @@ export class DashboardComponent implements OnInit {
       this.currentForecastData.icon = res.weather[0].icon;
       this.currentForecastData.description = res.weather[0].description;
       this.currentForecastData.currentTemperature =
-        Math.floor((res.main.temp - 273.15) * 1.8) + 32 + '℉';
+      Math.floor((res.main.temp - 273.15) * 1.8) + 32 + '℉';
       this.currentForecastData.minTemperature =
-        Math.floor((res.main.temp_min - 273.15) * 1.8) + 32 + '℉';
+      Math.floor((res.main.temp_min - 273.15) * 1.8) + 32 + '℉';
       this.currentForecastData.maxTemperature =
-        Math.floor((res.main.temp_max - 273.15) * 1.8) + 32 + '℉';
+      Math.floor((res.main.temp_max - 273.15) * 1.8) + 32 + '℉';
       this.currentForecastData.humidity = res.main.humidity + '%';
       this.currentForecastData.wind = Math.ceil(Math.cbrt(Math.pow(res.wind.speed/0.836, 2))) + ' MPH';
       this.currentCityWeather.city = city + ', ' + state;
-        this.currentCityWeather.weather = this.currentForecastData.currentTemperature;
-        this.currentCityWeather.humidity = this.currentForecastData.humidity
-        this.currentCityWeather.weather = this.currentForecastData.currentTemperature
-        this.currentCityWeather.windSpeed = this.currentForecastData.wind
-        this.currentCityWeather.highTemp = this.currentForecastData.maxTemperature
-        this.currentCityWeather.lowTemp = this.currentForecastData.minTemperature
-        this.currentCityWeather.description = this.currentForecastData.description
+      this.currentCityWeather.weather = this.currentForecastData.currentTemperature;
+      this.currentCityWeather.humidity = this.currentForecastData.humidity
+      this.currentCityWeather.weather = this.currentForecastData.currentTemperature
+      this.currentCityWeather.windSpeed = this.currentForecastData.wind
+      this.currentCityWeather.highTemp = this.currentForecastData.maxTemperature
+      this.currentCityWeather.lowTemp = this.currentForecastData.minTemperature
+      this.currentCityWeather.description = this.currentForecastData.description
 
       this.forecastService
-        .loadSevenDayForecast(city, state)
-        .subscribe(
-          (res) => {
-            let days = res.list
-            for (let i = 0; i < days.length; i++) {
-              this.sevenDayForecastData = new SevenDayForecast();
+      .loadSevenDayForecast(city, state)
+      .subscribe(
+        (res) => {
+          this.sevenDayArray = []
+          this.sevenDayArray.push(res)
+          console.log(this.sevenDayArray)
+          let days= this.sevenDayArray[0].list
+          for (let i = 0; i < days.length; i++) {
+            this.sevenDayForecastData = new SevenDayForecast();
               this.sevenDayForecastData.day = moment
                 .unix(days[i].dt)
                 .format('dddd');
@@ -126,18 +135,17 @@ export class DashboardComponent implements OnInit {
               this.sevenDayForecastData.description =
               days[i].weather[0].description;
               this.sevenDayForecastData.minTemperature =
-                Math.floor((days.temp.min - 273.15) * 1.8) + 32 + '℉';
+                Math.floor((days[i].temp.min - 273.15) * 1.8) + 32 + '℉';
               this.sevenDayForecastData.maxTemperature =
-                Math.floor((days.temp.max - 273.15) * 1.8) + 32 + '℉';
+                Math.floor((days[i].temp.max - 273.15) * 1.8) + 32 + '℉';
               this.weekdayDataArray.push(this.sevenDayForecastData);
-              console.log(res)
             }
               this.router.navigate(['/sevenDayForecast'], {state: [{daily: this.currentCityWeather, weekdays: this.weekdayDataArray}]})
               this.weekdayDataArray = [];
           },
-          (error) => {
-            console.log(error);
-          }
+          // (error) => {
+          //   console.log(error);
+          // }
         );
     });
   }
@@ -160,7 +168,8 @@ export class DashboardComponent implements OnInit {
       this.currentCityWeather.lowTemp = parsedWeatherData[0].daily.lowTemp
       this.currentCityWeather.description = parsedWeatherData[0].daily.description
       this.data = parsedData
-
+    }else{
+      this.data = null
     }
 
     // creates togglers on init if they do not exist and preset the status
