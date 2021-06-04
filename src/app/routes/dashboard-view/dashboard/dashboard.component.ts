@@ -114,22 +114,23 @@ export class DashboardComponent implements OnInit {
         .loadSevenDayForecast(city, state)
         .subscribe(
           (res) => {
-
-            for (let i = 0; i < res.list.length; i++) {
+            let days = res.list
+            for (let i = 0; i < days.length; i++) {
               this.sevenDayForecastData = new SevenDayForecast();
               this.sevenDayForecastData.day = moment
-                .unix(res.list[i].dt)
+                .unix(days[i].dt)
                 .format('dddd');
               this.sevenDayForecastData.date = moment
-                .unix(res.list[i].dt)
+                .unix(days[i].dt)
                 .format('L');
               this.sevenDayForecastData.description =
-                res.list[i].weather[0].description;
+              days[i].weather[0].description;
               this.sevenDayForecastData.minTemperature =
-                Math.floor((res.list[i].temp.min - 273.15) * 1.8) + 32 + '℉';
+                Math.floor((days.temp.min - 273.15) * 1.8) + 32 + '℉';
               this.sevenDayForecastData.maxTemperature =
-                Math.floor((res.list[i].temp.max - 273.15) * 1.8) + 32 + '℉';
+                Math.floor((days.temp.max - 273.15) * 1.8) + 32 + '℉';
               this.weekdayDataArray.push(this.sevenDayForecastData);
+              console.log(res)
             }
               this.router.navigate(['/sevenDayForecast'], {state: [{daily: this.currentCityWeather, weekdays: this.weekdayDataArray}]})
               this.weekdayDataArray = [];
