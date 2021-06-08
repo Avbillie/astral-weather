@@ -1,6 +1,6 @@
 <div  class="search-bar-container">
-  <input class="search-bar level-item" #input type="text" placeholder="Washington">
-  <input class="search-bar2 level-item" #input2 type="text" placeholder="DC">
+  <input class="search-bar level-item" #input type="text" aria-placeholder="Washington">
+  <input class="search-bar2 level-item" #input2 type="text" aria-placeholder="DC">
 
   <button (click)="searchedCity(input.value, input2.value)" type="button"><img [src]="searchImg" alt=""
       srcset=""></button>
