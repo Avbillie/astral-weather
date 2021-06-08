@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   searchImg = './assets/images/magnifying-glass-icon-26752.png';
   sevenDayArray: any [] =[];
   dayArray: any[] = [];
-  stateCodeArray: any[] = []
+  stateCodeArray: any[] = [];
   weekdayDataArray: any[] = [];
   currentCityWeather: any = {
     city: '',
@@ -63,7 +63,6 @@ export class DashboardComponent implements OnInit {
         }
       }
     }
-    console.log(this.stateCodeArray)
   }
 
   toggle(){
@@ -122,7 +121,6 @@ export class DashboardComponent implements OnInit {
         (res) => {
           this.sevenDayArray = []
           this.sevenDayArray.push(res)
-          console.log(this.sevenDayArray)
           let days= this.sevenDayArray[0].list
           for (let i = 0; i < days.length; i++) {
             this.sevenDayForecastData = new SevenDayForecast();
@@ -143,9 +141,9 @@ export class DashboardComponent implements OnInit {
               this.router.navigate(['/sevenDayForecast'], {state: [{daily: this.currentCityWeather, weekdays: this.weekdayDataArray}]})
               this.weekdayDataArray = [];
           },
-          // (error) => {
-          //   console.log(error);
-          // }
+          (error) => {
+            console.log(error);
+          }
         );
     });
   }

@@ -66,10 +66,7 @@ export class SevenDayForecastComponent
       sessionStorage.setItem('dataRetrieved','true')
       // target search bar 1 and 2 only when there is weather data
       sessionStorage.setItem('toggleControl','off')
-    }else{
-      return console.log('false')
     }
-
   }
 
 }
