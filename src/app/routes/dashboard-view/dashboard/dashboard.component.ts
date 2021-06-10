@@ -87,6 +87,8 @@ export class DashboardComponent implements OnInit {
         this.toggle()
         sessionStorage.setItem('searchInitiated','true')
         this.loadForecastWeather(i.city, i.code);
+      }else{
+        return alert('Please enter a valid city or state.')
       }
     }
   }
