@@ -30,20 +30,18 @@
   height: auto;
   padding: 0;
   display:grid;
-  place-items: center
+  place-items: center;
+  margin:auto
 }
 
 .navigation-links-container{
   width: max-content;
+  margin: auto;
 }
 
 
 // utils
 
-::placeholder {
-  color: black;
-  opacity: 50%;
-}
 
 .box {
   float: left;
@@ -96,4 +94,10 @@
   display: block;
   justify-content: center;
   align-items: center;
+}
+
+button{
+  background-color: transparent;
+  border: 0;
+  padding: 0;
 }

@@ -72,7 +72,6 @@ export class DashboardComponent implements OnInit {
       sessionStorage.setItem('toggleControl','on')
       let t1:any = sessionStorage.getItem('toggleControl')
       this.toggleSwitch = t1
-
     }
   }
 
@@ -87,8 +86,6 @@ export class DashboardComponent implements OnInit {
         this.toggle()
         sessionStorage.setItem('searchInitiated','true')
         this.loadForecastWeather(i.city, i.code);
-      }else{
-        return alert('Please enter a valid city or state.')
       }
     }
   }
