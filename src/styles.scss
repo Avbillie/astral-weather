@@ -16,3 +16,8 @@ html{
   background: url("./assets/images/richmond_va.jpg") no-repeat center center fixed;
   background-size: cover
 }
+
+::placeholder {
+  color: black;
+  opacity: 50%;
+}

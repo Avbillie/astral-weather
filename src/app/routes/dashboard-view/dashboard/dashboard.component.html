@@ -31,13 +31,15 @@
         <p>{{currentCityWeather.description}}</p>
       </div>
     </div>
-    <div class="high-container">
-      <p class="high">H:</p>
-      <p class="max-temp">{{ currentCityWeather.highTemp }}</p>
-    </div>
-    <div class="low-container">
-      <p class="low">L:</p>
-      <p class="min-temp">{{ currentCityWeather.lowTemp}}</p>
+    <div class="highNlowTemp-container">
+      <div class="high-container box">
+        <p class="high">High</p>
+        <p class="max-temp">{{ currentCityWeather.highTemp }}</p>
+      </div>
+      <div class="low-container box">
+        <p class="low">Low</p>
+        <p class="min-temp">{{ currentCityWeather.lowTemp}}</p>
+      </div>
     </div>
   </div>
 </div>

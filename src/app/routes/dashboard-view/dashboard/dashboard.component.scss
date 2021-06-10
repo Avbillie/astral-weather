@@ -69,25 +69,36 @@
   font-size: 1.2rem;
 }
 
+.box {
+  float: left;
+  width: max-content;
+  text-align: center;
+  padding: 0rem 4rem
+}
+
 .high-container,
 .low-container {
+  display: block;
+  width: max-content;
+  text-align: center;
+}
+
+.highNlowTemp-container{
   display: flex;
   margin: auto;
   width: max-content;
 }
 
-
 .low-container .low,
 .high-container .high {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   text-shadow: white 1px 1px 1px;
 }
 
 .high-container .max-temp,
 .low-container .min-temp {
-  font-size: 1.5rem;
-  margin: auto 0rem auto .5rem;
+  font-size: 2.3rem;
 }
 
 .high-container .high,
@@ -212,10 +223,5 @@
   width: 2rem;
   height: 2rem;
   padding: .2rem;
-}
-
-::placeholder {
-  color: black!important;
-  opacity: 50%!important;
 }
 
