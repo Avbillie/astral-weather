@@ -65,16 +65,6 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  toggle(){
-
-    let data:any = sessionStorage.getItem('weatherData')
-    if(data !== null){
-      sessionStorage.setItem('toggleControl','on')
-      let t1:any = sessionStorage.getItem('toggleControl')
-      this.toggleSwitch = t1
-    }
-  }
-
  searchedCity(cityText: any, stateText: any) {
       const data ={
         city:cityText.toLowerCase(),
@@ -83,7 +73,6 @@ export class DashboardComponent implements OnInit {
 
     for(let i of this.stateCodeArray){
       if(i.city.toLowerCase() === data.city && i.code.toLowerCase() === data.code){
-        this.toggle()
         sessionStorage.setItem('searchInitiated','true')
         this.loadForecastWeather(i.city, i.code);
       }
@@ -137,7 +126,7 @@ export class DashboardComponent implements OnInit {
                 Math.floor((days[i].temp.max - 273.15) * 1.8) + 32 + '℉';
               this.weekdayDataArray.push(this.sevenDayForecastData);
             }
-              this.router.navigate(['/sevenDayForecast'], {state: [{daily: this.currentCityWeather, weekdays: this.weekdayDataArray}]})
+              this.router.navigate(['/sevenDayForecast'], {state: {daily: this.currentCityWeather, weekdays: this.weekdayDataArray}})
               this.weekdayDataArray = [];
           },
           (error) => {
@@ -153,31 +142,20 @@ export class DashboardComponent implements OnInit {
     const t1: any = sessionStorage.getItem('toggleControl')
     const weatherData: any = sessionStorage.getItem('weatherData')
     const dataRetrieved: any = sessionStorage.getItem('dataRetrieved')
-    if (weatherData !== null) {
+    if (weatherData) {
       sessionStorage.setItem('dataRetrieved', 'true')
       const parsedData = JSON.parse(dataRetrieved)
       const parsedWeatherData = JSON.parse(weatherData);
-      this.currentCityWeather.city = parsedWeatherData[0].daily.city;
-      this.currentCityWeather.weather = parsedWeatherData[0].daily.weather;
-      this.currentCityWeather.humidity = 'Humidity: ' + parsedWeatherData[0].daily.humidity;
-      this.currentCityWeather.windSpeed = 'Wind Speed: ' + parsedWeatherData[0].daily.windSpeed
-      this.currentCityWeather.highTemp = parsedWeatherData[0].daily.highTemp
-      this.currentCityWeather.lowTemp = parsedWeatherData[0].daily.lowTemp
-      this.currentCityWeather.description = parsedWeatherData[0].daily.description
+      this.currentCityWeather.city = parsedWeatherData.daily.city;
+      this.currentCityWeather.weather = parsedWeatherData.daily.weather;
+      this.currentCityWeather.humidity = 'Humidity: ' + parsedWeatherData.daily.humidity;
+      this.currentCityWeather.windSpeed = 'Wind Speed: ' + parsedWeatherData.daily.windSpeed
+      this.currentCityWeather.highTemp = parsedWeatherData.daily.highTemp
+      this.currentCityWeather.lowTemp = parsedWeatherData.daily.lowTemp
+      this.currentCityWeather.description = parsedWeatherData.daily.description
       this.data = parsedData
     }else{
       this.data = null
-    }
-
-    // creates togglers on init if they do not exist and preset the status
-    if (t1 === null) {
-      sessionStorage.setItem('toggleControl', 'on')
-      let t1: any = sessionStorage.getItem('toggleControl')
-      this.toggleSwitch = t1
-    } else {
-      // if togglers exist preset togglers status and do not create them
-      let t1: any = sessionStorage.getItem('toggleControl')
-      this.toggleSwitch = t1
     }
   }
 

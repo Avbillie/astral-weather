@@ -51,21 +51,18 @@ export class SevenDayForecastComponent
       sessionStorage.setItem('weatherData', JSON.stringify(historyData));
       const storageData:any = sessionStorage.getItem('weatherData');
       const parsedData = JSON.parse(storageData);
-      this.weekdaysArray = parsedData[0].weekdays;
-      this.currentCity.city = parsedData[0].daily.city;
-      this.currentCity.weather = parsedData[0].daily.weather;
+      this.weekdaysArray = parsedData.weekdays;
+      this.currentCity.city = parsedData.daily.city;
+      this.currentCity.weather = parsedData.daily.weather;
       sessionStorage.setItem('dataRetrieved','true')
       // toggle search bar 1 and 2 only when the search is initiated
-      sessionStorage.setItem('toggleControl','off')
     }else if(searchInitiated === 'false' && data !== null){
       const storageData:any = sessionStorage.getItem('weatherData');
       const parsedData = JSON.parse(storageData);
-      this.weekdaysArray = parsedData[0].weekdays;
-      this.currentCity.city = parsedData[0].daily.city;
-      this.currentCity.weather = parsedData[0].daily.weather;
+      this.weekdaysArray = parsedData.weekdays;
+      this.currentCity.city = parsedData.daily.city;
+      this.currentCity.weather = parsedData.daily.weather;
       sessionStorage.setItem('dataRetrieved','true')
-      // target search bar 1 and 2 only when there is weather data
-      sessionStorage.setItem('toggleControl','off')
     }
   }
 
