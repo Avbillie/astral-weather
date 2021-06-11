@@ -52,7 +52,7 @@ export class SevenDayForecastComponent
       const storageData:any = sessionStorage.getItem('weatherData');
       const parsedData = JSON.parse(storageData);
       this.weekdaysArray = parsedData.weekdays;
-      this.currentCity.city = parsedData.daily.city;
+      this.currentCity.city = parsedData.daily.cityNcode;
       this.currentCity.weather = parsedData.daily.weather;
       sessionStorage.setItem('dataRetrieved','true')
       // toggle search bar 1 and 2 only when the search is initiated
@@ -60,7 +60,7 @@ export class SevenDayForecastComponent
       const storageData:any = sessionStorage.getItem('weatherData');
       const parsedData = JSON.parse(storageData);
       this.weekdaysArray = parsedData.weekdays;
-      this.currentCity.city = parsedData.daily.city;
+      this.currentCity.city = parsedData.daily.cityNcode;
       this.currentCity.weather = parsedData.daily.weather;
       sessionStorage.setItem('dataRetrieved','true')
     }

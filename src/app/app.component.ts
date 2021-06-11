@@ -26,6 +26,8 @@ export class AppComponent {
   currentCityWeather: any = {
     city: '',
     weather: '',
+    cityNcode:'',
+    code:'',
     humidity: '',
     uvIndex: '',
     windSpeed: '',
@@ -42,6 +44,10 @@ export class AppComponent {
   ) { }
 
   ngOnInit(): void {
+    const data:any = sessionStorage.getItem('weatherData')
+    if(data){
+      this.searchedCity(data.daily.city, data.daily.code)
+    }
     this.parseJSONdata()
     this.searchedCity('Palm Springs', 'CA')
   }
@@ -95,7 +101,9 @@ export class AppComponent {
       Math.floor((res.main.temp_max - 273.15) * 1.8) + 32 + '℉';
       this.currentForecastData.humidity = res.main.humidity + '%';
       this.currentForecastData.wind = Math.ceil(Math.cbrt(Math.pow(res.wind.speed/0.836, 2))) + ' MPH';
-      this.currentCityWeather.city = city + ', ' + state;
+      this.currentCityWeather.cityNcode = city + ', ' + state;
+      this.currentCityWeather.city = city
+      this.currentCityWeather.code = state;
       this.currentCityWeather.weather = this.currentForecastData.currentTemperature;
       this.currentCityWeather.humidity = this.currentForecastData.humidity
       this.currentCityWeather.weather = this.currentForecastData.currentTemperature

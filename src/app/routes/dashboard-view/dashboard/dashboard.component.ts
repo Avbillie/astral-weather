@@ -26,6 +26,8 @@ export class DashboardComponent implements OnInit {
   currentCityWeather: any = {
     city: '',
     weather: '',
+    cityNcode:'',
+    code:'',
     humidity: '',
     uvIndex: '',
     windSpeed: '',
@@ -94,7 +96,9 @@ export class DashboardComponent implements OnInit {
       Math.floor((res.main.temp_max - 273.15) * 1.8) + 32 + '℉';
       this.currentForecastData.humidity = res.main.humidity + '%';
       this.currentForecastData.wind = Math.ceil(Math.cbrt(Math.pow(res.wind.speed/0.836, 2))) + ' MPH';
-      this.currentCityWeather.city = city + ', ' + state;
+      this.currentCityWeather.cityNcode = city + ', ' + state;
+      this.currentCityWeather.city = city
+      this.currentCityWeather.code = state;
       this.currentCityWeather.weather = this.currentForecastData.currentTemperature;
       this.currentCityWeather.humidity = this.currentForecastData.humidity
       this.currentCityWeather.weather = this.currentForecastData.currentTemperature
@@ -146,7 +150,7 @@ export class DashboardComponent implements OnInit {
       sessionStorage.setItem('dataRetrieved', 'true')
       const parsedData = JSON.parse(dataRetrieved)
       const parsedWeatherData = JSON.parse(weatherData);
-      this.currentCityWeather.city = parsedWeatherData.daily.city;
+      this.currentCityWeather.cityNcode = parsedWeatherData.daily.cityNcode;
       this.currentCityWeather.weather = parsedWeatherData.daily.weather;
       this.currentCityWeather.humidity = 'Humidity: ' + parsedWeatherData.daily.humidity;
       this.currentCityWeather.windSpeed = 'Wind Speed: ' + parsedWeatherData.daily.windSpeed
