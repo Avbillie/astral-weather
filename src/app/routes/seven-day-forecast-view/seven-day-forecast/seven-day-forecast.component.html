@@ -1,7 +1,7 @@
 <section class="container">
 
   <div *ngIf='currentCity.city !== ""' class="current-weather-container">
-    <h1>{{currentCity.cityNcode}}</h1>
+    <h1>{{currentCity.city}}</h1>
     <p>{{currentCity.weather}}</p>
     <a href="" (click)="switchControl()"><img [src]="searchImg" alt="" srcset=""></a>
   </div>
