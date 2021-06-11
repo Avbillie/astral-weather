@@ -49,7 +49,7 @@ export class AppComponent {
     if(data){
       this.searchedCity(data.daily.city, data.daily.code)
     }else{
-      this.searchedCity('Palm Springs', 'CA')
+      this.searchedCity('Richmond', 'VA')
     }
   }
 
