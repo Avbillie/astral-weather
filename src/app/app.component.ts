@@ -113,7 +113,7 @@ export class AppComponent {
           this.sevenDayArray.push(res)
           let days= this.sevenDayArray[0].list
             for (let i = 0; i < days.length; i++) {
-              console.log(i)
+
               this.sevenDayForecastData = new SevenDayForecast();
               this.sevenDayForecastData.day = moment
                 .unix(days[i].dt)
