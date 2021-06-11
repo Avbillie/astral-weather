@@ -10,26 +10,12 @@ export class ForecastService implements OnInit{
   zipCodeApiKey ='DemoOnly00hyOkXJnc87y8GZIXRbGqf2HMYbLiqcM172xDuIPadr8fCwAscJ1kWP'
   constructor(private https: HttpClient) { }
   country = 'us'
-  apiCallsLeft:any;
-  setNumber = 600
 
   ngOnInit(){
-    if(localStorage.length < 1){
-      localStorage.setItem('apiCalls',JSON.stringify(this.setNumber))
-    }
   }
 
   loadCurrentForecast(city:any, state:any): Observable<any>{
-    this.countAPIcalls()
-    console.log('There are '+this.apiCallsLeft+' api calls left')
     return this.https.get(`https://api.openweathermap.org/data/2.5/weather?q=${city},${state},${this.country}&cnt=1&appid=${this.apiKey}`)
-  }
-
-  countAPIcalls(){
-    let api:any = localStorage.getItem('apiCalls')
-    let newCount = api - 1
-    localStorage.setItem('apiCalls',JSON.stringify(newCount))
-    this.apiCallsLeft = localStorage.getItem('apiCalls')
   }
 
   loadSevenDayForecast(city:any,state:any){
