@@ -45,11 +45,12 @@ export class AppComponent {
 
   ngOnInit(): void {
     const data:any = sessionStorage.getItem('weatherData')
+    this.parseJSONdata()
     if(data){
       this.searchedCity(data.daily.city, data.daily.code)
+    }else{
+      this.searchedCity('Palm Springs', 'CA')
     }
-    this.parseJSONdata()
-    this.searchedCity('Palm Springs', 'CA')
   }
 
   ngOnChanges() {
